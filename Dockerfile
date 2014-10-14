@@ -14,7 +14,8 @@ RUN mkdir -p /home/chianyu
 RUN apt-get update && apt-get update -y && apt-get install --no-install-recommends -y -q curl sudo supervisor
 
 # java
-RUN curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u67-b01/jdk-7u67-linux-x64.tar.gz' -H 'Cookie: oraclelicense=accepmt-securebackup-cookie' | tar -xz -C /home/chianyu/
+RUN curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u67-b01/jdk-7u67-linux-x64.tar.gz' -H 'Cookie: oraclelicense=accepmt-securebackup-cookie'
+RUN tar vxfz jdk-7u67-linux-x64.tar.gz -C /home/chianyu/
 RUN rm jdk-7u67-linux-x64.tar.gz
 
 ENV JAVA_HOME /home/chianyu/jdk-7u67-linux-x64
