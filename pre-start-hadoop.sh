@@ -1,5 +1,6 @@
 # gen core-site.xml
 sed s/HOSTNAME/$(ip addr show eth0 | grep -Po 'inet \K[\d.]+')/ /etc/hadoop/conf/core-site.xml.template > /etc/hadoop/conf/core-site.xml
+cat /etc/hadoop/conf/core-site.xml
 
 # create namenode
 mkdir -p /home/chianyu/shared_with_docker_container/cdh4/nn 
