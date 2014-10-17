@@ -6,8 +6,9 @@ cat /etc/hadoop/conf/core-site.xml
 mkdir -p /home/chianyu/shared_with_docker_container/hadoop-log-dir
 chown -R hdfs:hdfs /home/chianyu/shared_with_docker_container/hadoop-log-dir
 
-# create datanode
-mkdir -p /home/chianyu/shared_with_docker_container/cdh4/dn 
-chown -R hdfs:hdfs /home/chianyu/shared_with_docker_container/cdh4/dn
-chmod 700 /home/chianyu/shared_with_docker_container/cdh4/dn
-
+# create datanode if not exist
+if [ ! -f /home/chianyu/shared_with_docker_container/cdh4/dn ]; then
+  mkdir -p /home/chianyu/shared_with_docker_container/cdh4/dn
+  chown -R hdfs:hdfs /home/chianyu/shared_with_docker_container/cdh4/dn
+  chmod 700 /home/chianyu/shared_with_docker_container/cdh4/dn
+fi

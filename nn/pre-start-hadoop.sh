@@ -6,11 +6,10 @@ cat /etc/hadoop/conf/core-site.xml
 mkdir -p /home/chianyu/shared_with_docker_container/hadoop-log-dir
 chown -R hdfs:hdfs /home/chianyu/shared_with_docker_container/hadoop-log-dir
 
-# create namenode
-mkdir -p /home/chianyu/shared_with_docker_container/cdh4/nn 
-chown -R hdfs:hdfs /home/chianyu/shared_with_docker_container/cdh4/nn
-chmod 700 /home/chianyu/shared_with_docker_container/cdh4/nn
-
-# format namenode
-sudo -u hdfs hdfs namenode -format
-
+# create and format namenode if not exist
+if [ ! -f /home/chianyu/shared_with_docker_container/cdh4/nn ]; then
+  mkdir -p /home/chianyu/shared_with_docker_container/cdh4/nn
+  chown -R hdfs:hdfs /home/chianyu/shared_with_docker_container/cdh4/nn
+  chmod 700 /home/chianyu/shared_with_docker_container/cdh4/nn
+  sudo -u hdfs hdfs namenode -format  # format
+fi
