@@ -1,6 +1,6 @@
 # Creates distributed cdh5
 #
-# docker build -t bioshrek/hadoop-hdfs-namenode:cdh5 .
+# docker build -t bioshrek/zookeeper:cdh5 .
 
 FROM ubuntu:12.04
 MAINTAINER Huan Wang <shrekwang1@gmail.com>
@@ -21,23 +21,22 @@ RUN rm jdk-7u67-linux-x64.tar.gz
 ENV JAVA_HOME /home/chianyu/jdk1.7.0_67
 ENV PATH $PATH:$JAVA_HOME/bin
 
-# install hadoop
+# install zookeeper
 RUN curl -O http://archive.cloudera.com/cdh5/one-click-install/precise/amd64/cdh5-repository_1.0_all.deb 
 RUN dpkg -i cdh5-repository_1.0_all.deb
 RUN curl -s http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh/archive.key | sudo apt-key add -
-RUN apt-get update -y && apt-get install -y hadoop-hdfs-namenode
+RUN apt-get update -y && apt-get install -y zookeeper zookeeper-server
 
-# config hadoop
-ADD hadoop-env.sh /etc/hadoop/conf/hadoop-env.sh
-ADD core-site.xml.template /etc/hadoop/conf/core-site.xml.template
-ADD hdfs-site.xml /etc/hadoop/conf/hdfs-site.xml
+# config zookeeper
+ADD zoo.cfg /etc/zookeeper/conf/zoo.cfg
+ADD log4j.properties /etc/zookeeper/conf/log4j.properties
 
 # supervisord
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# start hadoop
-ADD pre-start-hadoop.sh /home/chianyu/pre-start-hadoop.sh
-RUN chmod a+x /home/chianyu/pre-start-hadoop.sh
-ENTRYPOINT /home/chianyu/pre-start-hadoop.sh && /usr/bin/supervisord
+# start zookeeper
+ADD pre-start-zookeeper.sh /home/chianyu/pre-start-zookeeper.sh
+RUN chmod a+x /home/chianyu/pre-start-zookeeper.sh
+ENTRYPOINT /home/chianyu/pre-start-zookeeper.sh && /usr/bin/supervisord
 
-EXPOSE 50020 50090 50070 50010 50075 8031 8032 8033 8040 8042 49707 22 8088 8030
+EXPOSE 2181 2888 3888
