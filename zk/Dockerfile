@@ -37,6 +37,6 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # start zookeeper
 ADD pre-start-zookeeper.sh /home/chianyu/pre-start-zookeeper.sh
 RUN chmod a+x /home/chianyu/pre-start-zookeeper.sh
-ENTRYPOINT /home/chianyu/pre-start-zookeeper.sh && /usr/bin/supervisord
+# ENTRYPOINT /home/chianyu/pre-start-zookeeper.sh && /usr/bin/supervisord
 
 EXPOSE 2181 2888 3888
