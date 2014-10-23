@@ -2,7 +2,7 @@
 #
 # docker build -t bioshrek/hbase-regionserver:cdh5 .
 
-FROM bioshrek/hadoop-hbase:cdh5
+FROM bioshrek/hadoop-base:cdh5
 MAINTAINER Huan Wang <shrekwang1@gmail.com>
 
 # config hbase
