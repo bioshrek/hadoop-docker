@@ -11,6 +11,7 @@ ADD hbase-site.xml.template /etc/hbase/conf/hbase-site.xml.template
 
 # config hadoop client
 ADD core-site.xml.template /etc/hadoop/conf/core-site.xml.template
+ADD hadoop-env.sh /etc/hadoop/conf/hadoop-env.sh
 
 # supervisord
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
