@@ -6,6 +6,10 @@ cat /etc/hbase/conf/hbase-site.xml
 sed "s/HDFSNAMENODERPC_SERVICE_HOST/$HDFSNAMENODERPC_SERVICE_HOST/;s/HDFSNAMENODERPC_SERVICE_PORT/$HDFSNAMENODERPC_SERVICE_PORT/" /etc/hadoop/conf/core-site.xml.template > /etc/hadoop/conf/core-site.xml
 cat /etc/hadoop/conf/core-site.xml
 
+# append host item
+echo "$HBASEMASTERIPC_SERVICE_HOST hbase-master" >> /etc/hosts
+cat /etc/hosts
+
 # log dir
 mkdir -p /home/chianyu/shared_with_docker_container/hbase-log-dir
 chown -R hbase:hbase /home/chianyu/shared_with_docker_container/hbase-log-dir
