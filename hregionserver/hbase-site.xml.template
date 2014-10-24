@@ -3,9 +3,13 @@
 <configuration>
   <property>
     <name>hbase.zookeeper.quorum</name>
-    <value>ZOOKEEPERCLIENT_SERVICE_HOST:ZOOKEEPERCLIENT_SERVICE_PORT</value>
+    <value>ZOOKEEPERCLIENT_SERVICE_HOST</value>
     <description>The directory shared by RegionServers.
     </description>
+  </property>
+  <property>
+    <name>hbase.zookeeper.property.clientPort</name>
+    <value>ZOOKEEPERCLIENT_SERVICE_PORT</value>
   </property>
   <property>
     <name>hbase.rootdir</name>
