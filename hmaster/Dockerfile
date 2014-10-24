@@ -9,6 +9,9 @@ MAINTAINER Huan Wang <shrekwang1@gmail.com>
 ADD hbase-env.sh /etc/hbase/conf/hbase-env.sh
 ADD hbase-site.xml.template /etc/hbase/conf/hbase-site.xml.template
 
+# config hadoop client
+ADD core-site.xml.template /etc/hadoop/conf/core-site.xml.template
+
 # supervisord
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
