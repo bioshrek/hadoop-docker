@@ -7,7 +7,7 @@ mkdir -p /home/chianyu/shared_with_docker_container/hadoop-log-dir
 chown -R hdfs:hdfs /home/chianyu/shared_with_docker_container/hadoop-log-dir
 
 # create and format namenode if not exist
-if [ ! -d /home/chianyu/shared_with_docker_container/cdh5/nn ]; then
+if [ ! -d /home/chianyu/shared_with_docker_container/cdh5/nn/current ]; then
   mkdir -p /home/chianyu/shared_with_docker_container/cdh5/nn
   chown -R hdfs:hdfs /home/chianyu/shared_with_docker_container/cdh5/nn
   chmod 700 /home/chianyu/shared_with_docker_container/cdh5/nn
