@@ -6,6 +6,7 @@ FROM bioshrek/hadoop-base:cdh5
 MAINTAINER Huan Wang <shrekwang1@gmail.com>
 
 # config hbase
+ADD hostname /etc/hostname  # override hostname
 ADD hbase-env.sh /etc/hbase/conf/hbase-env.sh
 ADD hbase-site.xml.template /etc/hbase/conf/hbase-site.xml.template
 
